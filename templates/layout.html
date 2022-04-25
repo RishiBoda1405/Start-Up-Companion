@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/messages.css') }}"
+/>
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category,message in messages %}
+<div class="animated slideInDown alert-{{ category }}">
+  <p id="msg">{{ message }}</p>
+</div>
+{% endfor %} {% endif %} {% endwith %} {% block body %}{% endblock %}

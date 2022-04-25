@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+<html>
+	{% block body %}
+<head>
+		<title>Client DashBoard</title>
+		<style>
+			body{
+				  font-family:"Arial", Serif;
+				  background-color:#f4f4f4;
+				  overflow-x:hidden;
+				}
+
+
+				.navbar a{
+				  float:left;
+				  display:block;
+				  color:#f2f2f2;
+				  text-align:center;
+				  padding:14px 16px;
+				  text-decoration:none;
+				  font-size:17px;
+				}
+
+				.navbar a:hover{
+				  background-color:#ddd;
+				  color:#000;
+				}
+
+				.side-nav{
+				  height:100%;
+				  width:0;
+				  position:fixed;
+				  z-index:1;
+				  top:0;
+				  left:0;
+				  background-color:#111;
+				  opacity:0.9;
+				  overflow-x:hidden;
+				  padding-top:60px;
+				  transition:0.5s;
+				}
+
+				.side-nav a{
+				  padding:10px 10px 10px 30px;
+				  text-decoration:none;
+				  font-size:22px;
+				  color:#ccc;
+				  display:block;
+				  transition:0.3s;
+				}
+
+				.side-nav a:hover{
+				  color:#fff;
+				}
+
+				.side-nav .btn-close{
+				  position:absolute;
+				  top:0;
+				  right:22px;
+				  font-size:36px;
+				  margin-left:50px;
+				}
+
+				#main{
+				  transition:margin-left 0.5s;
+				  padding:20px;
+				  overflow:hidden;
+				  width:100%;
+				}
+
+				@media(max-width:568px){
+				  .navbar-nav{display:none}
+				}
+
+				@media(min-width:568px){
+				  /*.open-slide{display:none}*/
+				}
+				.card {
+				  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+				  transition: 0.3s;
+				  width: 95%;
+				  border-radius: 5px;
+				  justify-content: center;
+				  margin-bottom: 20px;
+				}
+
+				.card:hover {
+				  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+				}
+
+				.container {
+				  padding: 2px 16px;
+				}
+				.column {
+				  float: left;
+				  width: 25%;
+				  padding: 0 10px;
+				}
+				.row {margin: 0 -5px;}
+				.row:after {
+				  content: "";
+				  display: table;
+				  clear: both;
+				}
+				@media screen and (max-width: 600px) {
+				  .column {
+				    width: 100%;
+				    display: block;
+				    margin-bottom: 20px;
+				  }
+				}
+
+				/* Style the counter cards */
+				.card1 {
+				  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+				  padding: 16px;
+				  text-align: center;
+				  background-color: #f1f1f1;
+				  margin:20px;
+				}
+
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+	    <span class="open-slide">
+	      <a href="#" onclick="openSlideMenu()">
+	        <svg width="30" height="30">
+	            <path d="M0,5 30,5" stroke="#111" stroke-width="5"/>
+	            <path d="M0,14 30,14" stroke="#111" stroke-width="5"/>
+	            <path d="M0,23 30,23" stroke="#111" stroke-width="5"/>
+	        </svg>
+	      </a>
+	    </span>
+	  </nav>
+	  <br>
+	  <br>
+	  <hr>
+		<h2 align="center">Start-Up Details</h2>
+		<h3>Abstrct Of the Start-up</h3>
+		<div class="card">
+		  <div class="container">
+		    <h4><b>StartUp Name</b></h4> 
+		    <p>Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.Abstract to appear.</p> 
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="column">
+		    <div class="card1">
+		      <h3>Sponserhip Recevied</h3>
+		      <p>From sponser1: Rs.xxxx</p>
+		      <p>From sponser2: Rs.xxxx</p>
+		      <p>From sponser3: Rs.xxxx</p>
+		    </div>
+		  </div>
+
+		  <div class="column">
+		    <div class="card1">
+		      <h3>Shares</h3>
+		      <p>For Spinser1: x%</p>
+		      <p>For Spinser2: x%</p>
+		      <p>For Spinser3: x%</p>
+		    </div>
+		  </div>
+		  
+		  <div class="column">
+		    <div class="card1">
+		      <h3>Company Details</h3>
+		      <p>Location: ---house,---street</p>
+		      <p>Contact.No:0123456789</p>
+		      <p>Total Profit's: yyyy</p>
+		    </div>
+		  </div>
+	  <div id="side-menu" class="side-nav">
+	    <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+	    <a href="#">Dashboard</a>
+	    <a href="/">Home</a>
+	    <a href="/receviedsponserships">Received Spnoserships</a>
+		<a href="/sendrequestclient">Send Request</a>
+		<a href="/myrequests">My Requests</a>
+		<a href="/logout" id="log">Logout</a>
+	  </div>
+
+	  <script>
+	    function openSlideMenu(){
+	      document.getElementById('side-menu').style.width = '250px';
+	      document.getElementById('main').style.marginLeft = '250px';
+	    }
+
+	    function closeSlideMenu(){
+	      document.getElementById('side-menu').style.width = '0';
+	      document.getElementById('main').style.marginLeft = '0';
+	    }
+  </script>
+	</body>
+	{% endblock %}
+</html>

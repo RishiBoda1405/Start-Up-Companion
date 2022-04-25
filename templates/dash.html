@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style type="text/css">
+      body {
+        background-color: #121212;
+      }
+      #navbar ul {
+        margin: 0;
+        padding: 5px;
+        list-style-type: none;
+        text-align: left;
+        background-color: #000;
+      }
+
+      #navbar ul li {
+        display: inline;
+      }
+
+      #navbar ul li a {
+        text-decoration: none;
+        padding: 0.2em 1em;
+        color: #fff;
+        background-color: #000;
+      }
+
+      #navbar ul li a:hover {
+        color: #000;
+        background-color: #fff;
+      }
+      #navbar ul li a.active {
+        background-color: #7740cf;
+        color: white;
+      }
+      h4 {
+        text-align: center;
+        color: #7740cf;
+      }
+      td {
+        color: white;
+        font-size: 17px;
+      }
+      th {
+        color: #7740cf;
+        font-size: 20px;
+      }
+      #log {
+        float: right;
+        color: red;
+      }
+      #dis {
+        max-width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <ul>
+        <li><a href="#">Hello, {{ session.name }}</a></li>
+        <li><a href="#" class="active">Dashboard</a></li>
+        <li><a href="/logout" id="log">Logout</a></li>
+      </ul>
+    </div>
+    <br />
+    <h4>All Users</h4>
+    <table class="highlight centered responsive-table">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>User Email</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for user in users %}
+        <tr class="animated slideInUp">
+          <td>{{ user['name'] }}</td>
+          <td>{{ user['mail']}}</td>
+          <td>{{ user['role']}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
